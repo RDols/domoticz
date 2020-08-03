@@ -14,3 +14,6 @@
 	path = extern/minizip
 	url = https://github.com/domoticz/minizip.git
 	ignore = dirty
+[submodule "extern/open-zwave"]
+	path = extern/open-zwave
+	url = https://github.com/OpenZWave/open-zwave.git
