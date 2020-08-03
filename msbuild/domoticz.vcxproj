@@ -212,6 +212,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <None Include="..\CMakeLists.txt" />
+    <None Include="..\extern\jsoncpp\src\lib_json\json_valueiterator.inl" />
     <None Include="..\getsvn.cmake" />
     <None Include="..\webserver\proxydef.def" />
     <None Include="..\www\app\AboutController.js" />
@@ -525,6 +526,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\extern\jsoncpp\include\json\allocator.h" />
+    <ClInclude Include="..\extern\jsoncpp\include\json\assertions.h" />
+    <ClInclude Include="..\extern\jsoncpp\include\json\config.h" />
+    <ClInclude Include="..\extern\jsoncpp\include\json\forwards.h" />
+    <ClInclude Include="..\extern\jsoncpp\include\json\json.h" />
+    <ClInclude Include="..\extern\jsoncpp\include\json\json_features.h" />
+    <ClInclude Include="..\extern\jsoncpp\include\json\reader.h" />
+    <ClInclude Include="..\extern\jsoncpp\include\json\value.h" />
+    <ClInclude Include="..\extern\jsoncpp\include\json\version.h" />
+    <ClInclude Include="..\extern\jsoncpp\include\json\writer.h" />
+    <ClInclude Include="..\extern\jsoncpp\src\lib_json\json_tool.h" />
     <ClInclude Include="..\hardware\1Wire.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
@@ -809,6 +821,18 @@
     <ClInclude Include="..\hardware\XiaomiGateway.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\extern\jsoncpp\src\lib_json\json_reader.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\extern\jsoncpp\src\lib_json\json_value.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\extern\jsoncpp\src\lib_json\json_writer.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="..\hardware\1Wire.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
