@@ -1574,6 +1574,9 @@
     <ClInclude Include="..\hardware\DenkoviUSBDevices.h">
       <Filter>Devices\Denkovi</Filter>
     </ClInclude>
+    <ClInclude Include="..\hardware\DeviceValueChecker.h">
+      <Filter>Devices</Filter>
+    </ClInclude>
     <ClInclude Include="..\hardware\DomoticzHardware.h">
       <Filter>Devices</Filter>
     </ClInclude>
@@ -2337,6 +2340,9 @@
     </ClCompile>
     <ClCompile Include="..\hardware\DenkoviUSBDevices.cpp">
       <Filter>Devices\Denkovi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\hardware\DeviceValueChecker.cpp">
+      <Filter>Devices</Filter>
     </ClCompile>
     <ClCompile Include="..\hardware\DomoticzHardware.cpp">
       <Filter>Devices</Filter>
