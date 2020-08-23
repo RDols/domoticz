@@ -45,6 +45,7 @@ protected:
 	unsigned char m_rxbuffer[RX_BUFFER_SIZE] = { 0 };
 	unsigned char m_rxbufferpos = { 0 };
 private:
+	static void CorrectBatteryLevel(uint8_t* pData);
 	static bool CheckValidRFXData(const uint8_t *pData);
 	void SendCommand(const unsigned char Cmd);
 	std::shared_ptr<std::thread> m_thread;

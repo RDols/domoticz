@@ -41,7 +41,10 @@ bool CRFXBase::onInternalMessage(const unsigned char *pBuffer, const size_t Len,
 		if (m_rxbufferpos > m_rxbuffer[0])
 		{
 			if (!checkValid || CheckValidRFXData((uint8_t*)&m_rxbuffer))
+			{
+				CorrectBatteryLevel((uint8_t*)&m_rxbuffer);
 				sDecodeRXMessage(this, (const uint8_t*)&m_rxbuffer, NULL, -1);
+			}
 			else
 				Log(LOG_ERROR, "Invalid data received!....");
 
@@ -50,6 +53,44 @@ bool CRFXBase::onInternalMessage(const unsigned char *pBuffer, const size_t Len,
 		ii++;
 	}
 	return true;
+}
+
+void CRFXBase::CorrectBatteryLevel(uint8_t* pData)
+{
+	if ((pData[1] == pTypeTEMP_HUM))
+	{
+		tRBUF* buf = reinterpret_cast<tRBUF*>(pData);
+		if (buf->TEMP_HUM.subtype == sTypeTH10)
+		{
+			if (buf->TEMP_HUM.id2 == 0xF9)
+			{
+				buf->TEMP_HUM.id2 = 0x01;
+				buf->TEMP_HUM.battery_level = 0x00;
+			}
+			if (buf->TEMP_HUM.id2 == 0xFB)
+			{
+				buf->TEMP_HUM.id2 = 0x03;
+				buf->TEMP_HUM.battery_level = 0x00;
+			}
+		}
+	}
+	if ((pData[1] == pTypeTEMP))
+	{
+		tRBUF* buf = reinterpret_cast<tRBUF*>(pData);
+		if (buf->TEMP.subtype == sTypeTEMP9)
+		{
+			if (buf->TEMP.id2 == 0x02)
+			{
+				buf->TEMP_HUM.packettype = pTypeTEMP_HUM;
+				buf->TEMP_HUM.subtype = sTypeTH10;
+				buf->TEMP_HUM.id2 = 0x02;
+				buf->TEMP_HUM.humidity = 0x00;
+				buf->TEMP_HUM.humidity_status = 0x00;
+				buf->TEMP_HUM.battery_level = 0x00;
+				buf->TEMP_HUM.rssi = buf->TEMP.rssi;
+			}
+		}
+	}
 }
 
 bool CRFXBase::CheckValidRFXData(const uint8_t *pData)
