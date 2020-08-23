@@ -36,6 +36,7 @@
 #include "../hardware/eHouseTCP.h"
 #include "../hardware/USBtin.h"
 #include "../hardware/USBtin_MultiblocV8.h"
+#include "../hardware/AirconWithMe.h"
 #ifdef WITH_GPIO
 #include "../hardware/Gpio.h"
 #include "../hardware/GpioPin.h"
@@ -1345,7 +1346,11 @@ namespace http {
 			}
 			else if (htype == HTYPE_EcoCompteur) {
 				//all fine here!
-			} else if (htype == HTYPE_Meteorologisk) {
+			}
+			else if (htype == HTYPE_Meteorologisk) {
+				//all fine here!
+			} 
+			else if (htype == HTYPE_AirconWithMe) {
 				//all fine here!
 			}
 			else
@@ -1743,6 +1748,9 @@ namespace http {
 				//all fine here!
 			}
 			else if(htype == HTYPE_Meteorologisk) {
+				//all fine here!
+			}
+			else if (htype == HTYPE_AirconWithMe) {
 				//all fine here!
 			}
 			else
